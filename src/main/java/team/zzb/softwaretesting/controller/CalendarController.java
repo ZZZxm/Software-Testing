@@ -32,7 +32,7 @@ public class CalendarController {
 
         String actual;
         try {
-            actual = calendarService.searchByDay(year, month, day);
+            actual = calendarService.nextDate(year, month, day);
         } catch (DateIllegalException e) {
             actual = e.getMessage();
         }

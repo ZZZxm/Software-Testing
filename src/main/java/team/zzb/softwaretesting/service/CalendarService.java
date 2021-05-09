@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface CalendarService {
 
-    String searchByDay(int year, int month, int day) throws DateIllegalException;
+    String nextDate(int year, int month, int day) throws DateIllegalException;
 
     Collection boundaryTest();
 
