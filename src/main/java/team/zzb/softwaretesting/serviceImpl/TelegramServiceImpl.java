@@ -1,5 +1,6 @@
 package team.zzb.softwaretesting.serviceImpl;
 
+import org.springframework.stereotype.Service;
 import team.zzb.softwaretesting.service.TelegramService;
 import team.zzb.softwaretesting.serviceImpl.exception.FeeIllegalException;
 
@@ -13,6 +14,7 @@ import java.util.Collection;
  * @description TODO
  * @date 2021/5/9 22:28
  */
+@Service("TelegramService")
 public class TelegramServiceImpl implements TelegramService {
     public String thisMonthFee(double callTime, double notPayCount) throws FeeIllegalException
     {
