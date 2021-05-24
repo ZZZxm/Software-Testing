@@ -3,6 +3,9 @@ package team.zzb.softwaretesting.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import team.zzb.softwaretesting.service.SellerService;
+import team.zzb.softwaretesting.serviceImpl.exception.SellerIllegalException;
+
+import java.util.Collection;
 
 /**
  * @author Kerr
@@ -18,11 +21,26 @@ public class SellerController {
     @Autowired
     public SellerService sellerService;
 
-    @PostMapping("/problem3")
-    public double problem3(int hostNum, int monitorNum, int peripheralNum){
-        double salary=0;
-        salary=sellerService.problem3(hostNum, monitorNum, peripheralNum);
-//        String str=hostNum+"*25+"+monitorNum+"*30+"+peripheralNum+"*45->salary:"+salary;
-        return salary;
+    @PostMapping("/program")
+    public String program(int hostNum, int monitorNum, int peripheralNum) {
+        String result;
+        try {
+            double commission = sellerService.calculateCommission(hostNum, monitorNum, peripheralNum);
+            result = Double.toString(commission);
+        } catch (SellerIllegalException e) {
+            result = e.getMessage();
+        }
+        return result;
     }
+
+    @PostMapping("/boundaryTest")
+    public Collection boundaryTest() {
+        return sellerService.boundaryTest();
+    }
+
+    @PostMapping("/equivClassTest")
+    public Collection equivClassTest() {
+        return sellerService.equivClassTest();
+    }
+
 }

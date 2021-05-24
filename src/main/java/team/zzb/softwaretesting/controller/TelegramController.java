@@ -24,8 +24,8 @@ public class TelegramController {
     @Autowired
     public TelegramService telegramService;
 
-    @PostMapping("/getMonthFee")
-    public String getMonthFee(double callTime, double notPayCount) {
+    @PostMapping("/program")
+    public String program(double callTime, double notPayCount) {
 
         String result;
         try {

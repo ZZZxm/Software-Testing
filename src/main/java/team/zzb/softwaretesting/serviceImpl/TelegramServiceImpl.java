@@ -124,8 +124,8 @@ public class TelegramServiceImpl implements TelegramService {
 
         Object[][] results = new Object[testcases.length][5];
         for (int i = 0; i < testcases.length; i++) {
-            double callTime= (double) testcases[i][1];
-            double notPayCount= (double) testcases[i][2];
+            double callTime= Double.parseDouble(testcases[i][1].toString());
+            double notPayCount= Double.parseDouble(testcases[i][2].toString());
             String expected = (String) testcases[i][3];
 
             results[i][0] = testcases[i][0];
@@ -158,8 +158,8 @@ public class TelegramServiceImpl implements TelegramService {
 
         Object[][] results = new Object[testcases.length][5];
         for (int i = 0; i < testcases.length; i++) {
-            double callTime= (double) testcases[i][1];
-            double notPayCount= (double) testcases[i][2];
+            double callTime= Double.parseDouble(testcases[i][1].toString());
+            double notPayCount= Double.parseDouble(testcases[i][2].toString());
             String expected = (String) testcases[i][3];
 
             results[i][0] = testcases[i][0];

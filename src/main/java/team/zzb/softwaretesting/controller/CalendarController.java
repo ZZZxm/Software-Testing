@@ -27,8 +27,24 @@ public class CalendarController {
     @Autowired
     public CalendarService calendarService;
 
+    /*
     @PostMapping("/searchByDay")
-    public String searchByDay(int year, int month, int day) {
+    public String searchByDay(String year, String month, String day) {
+
+        System.out.println(year + month + day);
+
+        String actual;
+        try {
+            actual = calendarService.nextDate(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+        } catch (DateIllegalException e) {
+            actual = e.getMessage();
+        }
+        return actual;
+    }
+    */
+
+    @PostMapping("/program")
+    public String program(int year, int month, int day) {
 
         String actual;
         try {
@@ -38,6 +54,7 @@ public class CalendarController {
         }
         return actual;
     }
+
 
     @PostMapping("/boundaryTest")
     public Collection boundaryTest() {

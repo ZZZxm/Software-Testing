@@ -2,6 +2,10 @@ package team.zzb.softwaretesting.serviceImpl;
 
 import org.springframework.stereotype.Service;
 import team.zzb.softwaretesting.service.SellerService;
+import team.zzb.softwaretesting.serviceImpl.exception.SellerIllegalException;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @author Kerr
@@ -13,13 +17,14 @@ import team.zzb.softwaretesting.service.SellerService;
 @Service("SellerService")
 public class SellerServiceImpl implements SellerService {
     @Override
-    public double problem3(int hostNum, int monitorNum, int peripheralNum) {
+    public double calculateCommission(int hostNum, int monitorNum, int peripheralNum) throws SellerIllegalException {
         final int hostPrice = 25;
         final int monitorPrice = 30;
         final int peripheralPrice = 45;
         if (hostNum <= 0 || monitorNum <= 0 || peripheralNum <= 0 || hostNum > 70 || monitorNum > 80 || peripheralNum > 90) {
-            System.out.println("[Wrong]the number of item is illegal.");
-            return 0;
+            throw new SellerIllegalException("The number of items is illegal.");
+            // System.out.println("[Wrong]the number of items is illegal.");
+            // return 0;
         }
         int total = hostPrice * hostNum + monitorPrice * monitorNum + peripheralPrice * peripheralNum;
         if (total <= 1000) {
@@ -29,5 +34,17 @@ public class SellerServiceImpl implements SellerService {
         } else {
             return total * 0.2;
         }
+    }
+
+
+    @Override
+    public Collection boundaryTest() {
+        return new ArrayList();
+    }
+
+
+    @Override
+    public Collection equivClassTest() {
+        return new ArrayList();
     }
 }
